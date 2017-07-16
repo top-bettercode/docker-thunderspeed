@@ -1,7 +1,7 @@
 #!/bin/bash
 
-user="$USER"  
-logfile="/root/app.log"
+user="$USER"
+userhome="/root"
 
 sed -i "s/:$AUDIO_GID:/:11$AUDIO_GID:/" /etc/group
 sed -i "s/:$VIDEO_GID:/:11$VIDEO_GID:/" /etc/group
@@ -22,7 +22,7 @@ then
 fi
 
 if [ "$user"x != "root"x ]; then
-    logfile="/home/$user/app.log"
+    userhome="/home/$user"
 fi
 
 echo "use:$user"
@@ -32,8 +32,7 @@ if [ "$1" ]; then
     deepin-wine $1
 else
     echo "启动 $APP"
-    nohup /opt/deepinwine/apps/Deepin-$APP/run.sh >"$logfile" &
-    tail -fn 0 "$logfile"
+    /run.sh
 fi
 
 exit 0
