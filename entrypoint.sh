@@ -1,32 +1,14 @@
 #!/bin/bash
 
-user="$USER"
-userhome="/root"
-
-sed -i "s/:$AUDIO_GID:/:11$AUDIO_GID:/" /etc/group
-sed -i "s/:$VIDEO_GID:/:11$VIDEO_GID:/" /etc/group
-groupmod -g $AUDIO_GID audio
-groupmod -g $VIDEO_GID video
-
-#create group if not exists  
-egrep "^$group" /etc/group >& /dev/null  
-if [ $? -ne 0 ]  
-then  
-    groupadd -g $GID $user  
-fi  
-#create user if not exists  
-egrep "^$user" /etc/passwd >& /dev/null  
-if [ $? -ne 0 ]  
-then  
-    useradd -d "/home/$user" -u $UID -m -G audio,video $user
+groupmod -o -g $AUDIO_GID audio
+groupmod -o -g $VIDEO_GID video
+groupmod -o -g $GID thunderspeed
+if [ $UID != $(echo `id -u thunderspeed`) ]; then
+    usermod -o -u $UID thunderspeed
 fi
+chown -R thunderspeed:thunderspeed "/迅雷下载"
 
-if [ "$user"x != "root"x ]; then
-    userhome="/home/$user"
-fi
-
-echo "use:$user"
-su "$user" <<EOF
+su thunderspeed <<EOF
 if [ "$1" ]; then
     echo "deepin-wine $1"
     deepin-wine $1
