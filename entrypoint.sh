@@ -1,7 +1,6 @@
 #!/bin/bash
 
 groupmod -o -g $AUDIO_GID audio
-groupmod -o -g $VIDEO_GID video
 groupmod -o -g $GID thunderspeed
 if [ $UID != $(echo `id -u thunderspeed`) ]; then
     usermod -o -u $UID thunderspeed
