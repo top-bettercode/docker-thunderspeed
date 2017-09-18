@@ -34,7 +34,7 @@ services:
 或
 
 ```bash
-    docker run -d --name thunderspeed --device /dev/snd --net=host \
+    docker run -d --name thunderspeed --device /dev/snd \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v "/data/downloads:/迅雷下载" \
     -e DISPLAY=unix$DISPLAY \
