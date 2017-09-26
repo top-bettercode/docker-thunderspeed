@@ -11,11 +11,7 @@ ENV APP=ThunderSpeed \
     GID=1000 \
     UID=1000
 
-ADD entrypoint.sh /
-ADD run.sh /
-RUN chmod +x /entrypoint.sh && \
-    chmod +x /run.sh && \
-    groupadd -o -g $GID thunderspeed && \
+RUN groupadd -o -g $GID thunderspeed && \
     groupmod -o -g $AUDIO_GID audio && \
     useradd -d "/home/thunderspeed" -m -o -u $UID -g thunderspeed -G audio thunderspeed && \
     mkdir "/迅雷下载" && \
@@ -23,4 +19,8 @@ RUN chmod +x /entrypoint.sh && \
 
 VOLUME ["/迅雷下载"]
 
+ADD entrypoint.sh /
+ADD run.sh /
+RUN chmod +x /entrypoint.sh && \
+    chmod +x /run.sh
 ENTRYPOINT ["/entrypoint.sh"]
