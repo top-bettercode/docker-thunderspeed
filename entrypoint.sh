@@ -1,11 +1,13 @@
 #!/bin/bash
 
 groupmod -o -g $AUDIO_GID audio
-groupmod -o -g $GID thunderspeed
-if [ $UID != $(echo `id -u thunderspeed`) ]; then
-    usermod -o -u $UID thunderspeed
+if [ $UID != $(echo `id -u thunderspeed`) -o $GID != $(echo `id -g thunderspeed`) ]; then
+    groupmod -o -g $GID thunderspeed
+    if [ $UID != $(echo `id -u thunderspeed`) ]; then
+        usermod -o -u $UID thunderspeed
+    fi
+    chown -R thunderspeed:thunderspeed "/迅雷下载"
 fi
-chown -R thunderspeed:thunderspeed "/迅雷下载"
 
 su thunderspeed <<EOF
 if [ "$1" ]; then
