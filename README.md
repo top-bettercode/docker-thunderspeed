@@ -53,8 +53,8 @@ services:
     -e XMODIFIERS=@im=fcitx \
     -e QT_IM_MODULE=fcitx \
     -e GTK_IM_MODULE=fcitx \
-    -e AUDIO_GID=63 \
-    -e GID=1000 \
-    -e UID=1000 \
+    -e AUDIO_GID=`getent group audio | cut -d: -f3` \
+    -e GID=`id -g` \
+    -e UID=`id -u` \
     bestwu/thunderspeed
 ```
