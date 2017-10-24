@@ -41,6 +41,9 @@ ExtractApp()
         7z x "$APPDIR/$APPTAR" -o"$1"
         mv "$1/drive_c/users/@current_user@" "$1/drive_c/users/$USER"
         sed -i "s#@current_user@#$USER#" $1/*.reg
+        if [ "$CRACKED"=="true" ]; then
+                cp /home/thunderspeed/dll/* "/home/thunderspeed/.deepinwine/Deepin-ThunderSpeed/drive_c/Program Files/Thunder Network/Thunder/Program/"
+        fi
 }
 DeployApp()
 {

@@ -9,15 +9,7 @@ if [ $UID != $(echo `id -u thunderspeed`) ]; then
 fi
 chown thunderspeed:thunderspeed "/迅雷下载"
 
-
 su thunderspeed <<EOF
-if [ "$1" ]; then
-    echo "deepin-wine $1"
-    deepin-wine $1
-else
-    echo "启动 $APP"
-    /run.sh
-fi
-
-exit 0
+echo "启动 $APP"
+/run.sh
 EOF

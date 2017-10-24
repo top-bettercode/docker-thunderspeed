@@ -9,7 +9,8 @@ RUN apt-get update && \
 ENV APP=ThunderSpeed \
     AUDIO_GID=63 \
     GID=1000 \
-    UID=1000
+    UID=1000 \
+    CRACKED=false
 
 RUN groupadd -o -g $GID thunderspeed && \
     groupmod -o -g $AUDIO_GID audio && \
@@ -19,6 +20,7 @@ RUN groupadd -o -g $GID thunderspeed && \
 
 VOLUME ["/迅雷下载"]
 
+ADD dll.tar.xz /home/thunderspeed/
 ADD entrypoint.sh /
 ADD run.sh /
 RUN chmod +x /entrypoint.sh && \
