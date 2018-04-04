@@ -44,6 +44,11 @@ ExtractApp()
         if [ "$CRACKED"=="true" ]; then
                 cp /home/thunderspeed/dll/* "/home/thunderspeed/.deepinwine/Deepin-ThunderSpeed/drive_c/Program Files/Thunder Network/Thunder/Program/"
         fi
+        if [ ! -e "/home/thunderspeed/.thunderspeed/Profiles" ]; then
+                mv "/home/thunderspeed/.deepinwine/Deepin-ThunderSpeed/drive_c/Program Files/Thunder Network/Thunder/Profiles" /home/thunderspeed/.thunderspeed/
+        fi
+        rm -rf "/home/thunderspeed/.deepinwine/Deepin-ThunderSpeed/drive_c/Program Files/Thunder Network/Thunder/Profiles"
+        ln -s /home/thunderspeed/.thunderspeed/Profiles "/home/thunderspeed/.deepinwine/Deepin-ThunderSpeed/drive_c/Program Files/Thunder Network/Thunder/Profiles"
 }
 DeployApp()
 {

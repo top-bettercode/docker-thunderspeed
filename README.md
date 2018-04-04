@@ -36,6 +36,7 @@ services:
       - /dev/snd
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/.thunderspeed:/home/thunderspeed/.thunderspeed
       - "/data/downloads:/迅雷下载"
     environment:
       - DISPLAY=unix$DISPLAY
@@ -52,6 +53,7 @@ services:
 ```bash
     docker run -d --name thunderspeed --device /dev/snd \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v "$HOME/.thunderspeed:/home/thunderspeed/.thunderspeed" \
     -v "/data/downloads:/迅雷下载" \
     -e DISPLAY=unix$DISPLAY \
     -e XMODIFIERS=@im=fcitx \
