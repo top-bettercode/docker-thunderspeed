@@ -1,5 +1,7 @@
 [![Docker Image](https://img.shields.io/badge/docker%20image-available-green.svg)](https://hub.docker.com/r/bestwu/thunderspeed/)
 
+相关：[迅雷远程下载 docker 镜像](https://hub.docker.com/r/bestwu/xware/)
+
 本镜像基于[深度操作系统](https://www.deepin.org/download/)
 
 ### 准备工作

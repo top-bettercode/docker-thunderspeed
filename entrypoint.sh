@@ -8,7 +8,9 @@ if [ $UID != $(echo `id -u thunderspeed`) ]; then
     usermod -o -u $UID thunderspeed
 fi
 chown thunderspeed:thunderspeed "/迅雷下载"
-chown thunderspeed:thunderspeed /home/thunderspeed/.thunderspeed
+if [ -d "/home/thunderspeed/.thunderspeed" ]; then
+    chown thunderspeed:thunderspeed /home/thunderspeed/.thunderspeed
+fi
 
 su thunderspeed <<EOF
 echo "启动 $APP"
