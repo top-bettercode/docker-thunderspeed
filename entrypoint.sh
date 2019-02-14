@@ -14,5 +14,5 @@ fi
 
 su thunderspeed <<EOF
 echo "启动 $APP"
-/run.sh
+"/opt/deepinwine/apps/Deepin-$APP/run.sh"
 EOF
