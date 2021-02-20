@@ -66,3 +66,5 @@ services:
     -e UID=`id -u` \
     bestwu/thunderspeed
 ```
+
+<sub><sup>Special environment variable: CRACKED=true</sup></sub>
