@@ -36,6 +36,7 @@ services:
   thunderspeed:
     image: bestwu/thunderspeed
     container_name: thunderspeed
+    ipc: host
     devices:
       - /dev/snd
     volumes:
@@ -55,7 +56,7 @@ services:
 或
 
 ```bash
-    docker run -d --name thunderspeed --device /dev/snd \
+    docker run -d --name thunderspeed --device /dev/snd --ipc="host" \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v "$HOME/.thunderspeed:/home/thunderspeed/.thunderspeed" \
     -v "/data/downloads:/迅雷下载" \
